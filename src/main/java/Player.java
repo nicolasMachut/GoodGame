@@ -5,10 +5,12 @@ public class Player {
 
     private final Inventory inventory;
     private Coordinates coordinates;
+    private Equipment equipment;
 
     public Player () {
         this.coordinates = new Coordinates();
         this.inventory = new Inventory();
+        this.equipment = new Equipment();
     }
 
     public Coordinates getCoordinates() {
@@ -31,6 +33,10 @@ public class Player {
         } catch (InventoryFullException e) {
             Log.console("Inventory is full ! ");
         }
+    }
+
+    public void attack(NPC ennemy) {
+        ennemy.takeMajorDamage(1);
     }
 }
 

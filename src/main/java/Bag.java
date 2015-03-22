@@ -9,17 +9,23 @@ public class Bag {
     private int nbItem = 0;
 
     public Bag () {
-        this.items = new Item[DEFAULT_NB_ITEMS];
+        this(DEFAULT_NB_ITEMS);
     }
+
+    public Bag (int nbItems) {
+        this.items = new Item[nbItems];
+    }
+
     public void addItem (Item itemToAdd) throws BagFullException {
         if (!isFull()) {
-            this.items[nbItem - 1] = itemToAdd;
+            this.items[nbItem] = itemToAdd;
+            this.nbItem++;
         } else {
             throw new BagFullException();
         }
     }
 
-    private boolean isFull() {
-        return this.nbItem < this.items.length;
+    public boolean isFull() {
+        return this.nbItem == this.items.length;
     }
 }
